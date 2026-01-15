@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- saved from url=(1688)https://onetag-sys.com/usync/?cb=1768474610710&gdpr=1&gdpr_consent=CQeDNpgQeDNpgAcABBENCNFsAP_gAEPgAAYgL6NR_G__bXlj8bb1aftkeYxP9_hrrsQxBgbJk24FyLvW7JwX32E7NAzapqYKmRIAu3TBIQNlHIDURUCgKIgFrSDMaEyEoTNKJ6BkiFMZY2tYCFxvm4lDWQCY4vr99lc9mB-N7dr82dzyy6hHv3a5_2S0UJCdAYctDfv8ZBCT-9IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmM_dBmxt-ASff7Pn__rl_e7X_vc_n37v94XH77v_-__f_-7___2b_-_wXsAAEAAAgDBIAQABAAAAAACgAAAAAABAAAgDQAAAgCAAABAAgMJAAIAAAAQAAAABAgAAAAAQABAAAAACAAAAQCAAABgAABAAAEAAAEACBEAAABAJAwCAggACAACAwiAAAlAAAAAFgIEAIGBBEAAIEYAggBAgEAAAIABQAAABAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUGaLQVgScBkaYBg-YJklOgyAJghIyTYhN-Ew8UhRAghyA2KWYA6eIKAUEgbgALgAoACoAHAAPAAggBkAGoAPAAmABVADeAISAQwBEgCOAE0AK0AYYAywBsgDvAHtAPsA_QCAQEXARiAjQCOAFBAKgAVcAuYBigDaAG4AOIAh0BIgCdgFDgKPAUiApsBbAC4AFyALvAXmAw0BkgDJwGXAM5gawBrIDYwG6gOTAcuA8cIAWAAcAOcAg4BPwDRAI9ASKAlYBNoCnwFhALyAYgAxaBkIGRgNGAamA2gBtwDdAHBAPkHQQQAFwAUABUADgAIAAXQAyADUAHgATAAqwBcAF0AMQAb4BDAESAI4ATQAowBWgDDAGUANEAbIA7wB7QD7AP2AiwCMAEcAKCAVcAsQBcwC8gGKANoAbgA4gCHQEXgJEATIAnYBQ4CjwFNgKsAWKAtgBcAC5AF2gLvAXmAw0BjwDJIGTgZVAywDLgGcgNVAawA3UBxYDkwHLgPHAfWOAVwAOAA8AC4APwA0ADLAHOAO4AgEBBwEIAIiAT8AqABegDpAIQAR6AkUBKwCYgEygJtAUgApMBXYC1AFxALoAX0AxABiwDIQGTANGAaaA1MBrwDaAG2ANuAcfA50DnwHxAPtIQGAAFgAUABcAFUALgAYgA3gDvAI4ASkAoIBVwC5gGKANoApsBYoC0QFwALkAZOAzkBqoDxyAA0ANAAywBzgFiAR6Am0BSYC8gGpgNsAbcA58B8RKA6AAsACgAHAAeABMACqAFwAMUAhgCJAEcAKMAVoA2QB3gD8AI4AVcAxQCHQEXgJEAUeAsUBbAC8wGTgMsAZyA1gkALAAuAO4AgABUAEegJFASsAm0BSYDFgG5FIGAAC4AKAAqABwAEEAMgA0AB4AEwAKoAYoBDAESAKMAVoAygBogDZAHfAPsA_QCLAEYAI4AUEAq4BcwC8gGKANoAbgBDoCLwEiAJ2AUOApsBYoC2AFwALkAXaAvMBhoDJAGTgMuAZzA1gDWQG6gOTAeOUANgAXAEcAMsAc4A7gCAAEiALEAa8A7YB_wEegJFATEAm0BSACnwFdgLoAXkAvoBiwDJgGpgNeAcEA-IAAA.f_wACHwAAAAA -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Sync Pixels</title>
+</head>
+<body marginwidth="0" marginheight="0">
+
+<script>
+
+    if (!String.prototype.replaceAll) {
+        String.prototype.replaceAll = function(search, replace) {
+            const escapedSearchValue = search.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(escapedSearchValue, 'g');
+            return this.replace(regex, replace);
+        };
+    }
+
+    var syncPixels = "";
+    var syncIframes = "";
+
+    var GDPR_APPLIES = "gdpr=";
+    var GDPR = "gdpr_consent=";
+    var US_PRIVACY = "us_privacy=";
+
+
+    var params = location.search.substring(1);
+    var consentString = "";
+    var usPrivacy = "";
+    var gdprAppliesValue = "1";
+
+    try {
+
+        var index = params.indexOf(GDPR);
+        if (index >= 0) {
+            consentString = params.substring(index + GDPR.length).split("&")[0];
+        }
+
+        index = params.indexOf(GDPR_APPLIES);
+        if (index >= 0) {
+            var tmp = params.substring(index + GDPR_APPLIES.length).split("&")[0];
+            gdprAppliesValue = (tmp == null || tmp === "" || tmp === "1") ? "1" : "0";
+        }
+
+        index = params.indexOf(US_PRIVACY);
+        if (index >= 0) {
+            usPrivacy = params.substring(index + US_PRIVACY.length).split("&")[0];
+        }
+
+    } catch (e) {
+        console.log("Can't detect gdpr consent string");
+    }
+
+    if (syncPixels) {
+
+        var sync = syncPixels.split(" ");
+        if (sync != null) {
+            sync.forEach(function(url) {
+
+                url = url.replaceAll("${GDPR}",gdprAppliesValue);
+                url = url.replaceAll("${GDPR_STRING}", consentString);
+                url = url.replaceAll("${US_PRIVACY}", usPrivacy);
+
+                new Image().src = url;
+
+            });
+        }
+    }
+
+    if (syncIframes) {
+
+        var syncF = syncIframes.split(",");
+        if (syncF != null) {
+            syncF.forEach(function(url) {
+
+                url = url.replaceAll("${GDPR}",gdprAppliesValue);
+                url = url.replaceAll("${GDPR_STRING}", consentString);
+                url = url.replaceAll("${US_PRIVACY}", usPrivacy);
+
+                var iframe = document.createElement("iframe");
+                iframe.src = url;
+                iframe.style.display = "none";
+                iframe.style.width = "0px";
+                iframe.style.height = "0px";
+                document.body.appendChild(iframe);
+
+            });
+        }
+    }
+
+</script>
+
+
+</body></html>

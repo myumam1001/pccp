@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- saved from url=(0459)https://html5.gamedistribution.com/rvvASMiM/454852860d064a548c5cb36cfc82c0a3/index.html?gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL2h0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tLzQ1NDg1Mjg2MGQwNjRhNTQ4YzVjYjM2Y2ZjODJjMGEzLyIsInBhcmVudERvbWFpbiI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidG9wRG9tYWluIjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJoYXNJbXByZXNzaW9uIjpmYWxzZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xOCJ9 -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Happy Cub</title>
+    <link rel="stylesheet" href="./style.css">
+    <script id="gamedistribution-jssdk" src="./main.min.js"></script><script src="./UnityLoader.js"></script>
+	<link rel="stylesheet" media="screen" href="./partic.css">
+  <script>
+var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Happy Cub.json", {onProgress: UnityProgress});
+function UnityProgress(gameInstance, progress) {
+  if (!gameInstance.Module)
+    return;
+  if (!gameInstance.logo) {
+    gameInstance.logo = document.createElement("div");
+    gameInstance.logo.className = "logo " + gameInstance.Module.splashScreenStyle;
+    gameInstance.container.appendChild(gameInstance.logo);
+  }
+  if (!gameInstance.progress) {    
+    gameInstance.progress = document.createElement("div");
+    gameInstance.progress.className = "progress " + gameInstance.Module.splashScreenStyle;
+    gameInstance.progress.empty = document.createElement("div");
+    gameInstance.progress.empty.className = "empty";
+    gameInstance.progress.appendChild(gameInstance.progress.empty);
+    gameInstance.progress.full = document.createElement("div");
+    gameInstance.progress.full.className = "full";
+    gameInstance.progress.appendChild(gameInstance.progress.full);
+    gameInstance.container.appendChild(gameInstance.progress);
+  }
+  gameInstance.progress.full.style.width = (100 * progress) + "%";
+  gameInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
+  if (progress == 1)
+  {
+    gameInstance.logo.style.display = gameInstance.progress.style.display = "none";
+    document.getElementById("particles-js").remove();
+  }
+}
+</script>	
+<script type="text/javascript" async="" src="./saved_resource(1)" id="locus"></script></head>
+<body>
+<div class="webgl-content">
+    <div id="gameContainer" style="width: 100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: absolute;"><canvas id="#canvas" width="1375.94" height="777" style="width: auto; height: auto; cursor: default;"></canvas><div class="logo Dark" style="display: none;"></div><div class="progress Dark" style="display: none;"><div class="empty" style="width: 0%;"></div><div class="full" style="width: 100%;"></div></div></div>
+</div>
+
+<script src="./responsive.javascript"></script>
+<script src="./particles.js"></script>
+<script src="./app.js"></script>
+
+<script src="blob:https://html5.gamedistribution.com/cb0f70c3-b7c5-49d1-85c0-ab7b6499ac04" id="02835603704684594d381dfaaea5a711"></script></body></html>
